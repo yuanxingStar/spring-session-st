@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>标准登陆页面1</h2>
+	<h3>表单登录</h3>
+	<form action="/api/user/login" method="post">
+		<table>
+			<tr>
+				<td>用户名:</td>
+				<td><input type="text" name="username" id="username"></td>
+			</tr>
+			<tr>
+				<td>密码:</td>
+				<td><input type="password" name="password"></td>
+			</tr>
+<!--			<tr>
+				<td>短信验证码:</td>
+				<td><input type="text" name="smsCode"> <a href="javascript:;" onclick="fs()" >发送验证码</a></td>
+					&lt;!&ndash; href="/scvpt/app/code/sms.json?mobile=13012345678" &ndash;&gt;
+			</tr>
+			<tr>
+				<td colspan='2'><input name="remember-me" type="checkbox"
+					value="true" />记住我</td>
+			</tr>-->
+			<tr>
+				<td colspan="2"><button type="submit">登录</button></td>
+			</tr>
+		</table>
+	</form>
+	
+	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+	<script>
+		function fs() {
+			var mobile = document.getElementById('username').value;
+			
+			$.ajax({
+		        url:'/scvpt/app/code/sms.json?type=2&mobile='+ mobile,
+		        type:'GET',
+		        dataType:'json',
+		        success:function(response,xml){
+		            //请求成功后执行的代码
+		        },
+		        error:function(status){
+		            //失败后执行的代码
+		        }
+		    });
+		}
+	</script>
+</body>
+</html>
